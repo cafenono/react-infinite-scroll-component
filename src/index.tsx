@@ -168,7 +168,10 @@ export default class InfiniteScroll extends Component<Props, State> {
     if (this.props.scrollableTarget instanceof HTMLElement)
       return this.props.scrollableTarget;
     if (typeof this.props.scrollableTarget === 'string') {
-      return this._infScroll?.closest(this.props.scrollableTarget);
+      return (
+        this._infScroll &&
+        (this._infScroll.closest(this.props.scrollableTarget) as HTMLElement)
+      );
     }
     if (this.props.scrollableTarget === null) {
       console.warn(`You are trying to pass scrollableTarget but it is null. This might
